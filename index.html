@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Birthday khushboo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  background:linear-gradient(to right,#c1b6fc,#f8d1dc);
+  font-family:'Poppins',sans-serif;
+  overflow-x:hidden;
+}
+.container{text-align:center;padding:1.5rem}
+h1{font-family:'Great Vibes',cursive;font-size:2.5rem;color:royalblue}
+
+.typewriter{
+  overflow:hidden;border-right:.15em solid royalblue;
+  white-space:nowrap;animation:typing 4s steps(40),blink .75s infinite;
+  font-size:1.2rem;font-weight:bold
+}
+.thought-message{
+  margin:1.8rem auto 2.5rem;
+  max-width:90%;
+  font-size:1.05rem;
+  line-height:1.8;
+  color:#6a1b9a;
+
+  opacity:0;
+  transform:translateY(20px);
+
+  animation:
+    thoughtFade 2.5s ease forwards,
+    softBeat 3s infinite;
+
+  animation-delay:4.2s, 6.8s;
+}
+
+@keyframes thoughtFade{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes softBeat{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.02)}
+}
+
+
+@keyframes typing{from{width:0}to{width:100%}}
+@keyframes blink{50%{border-color:transparent}}
+
+.message{margin:1.5rem auto;max-width:90%}
+
+.gallery{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem}
+.gallery img{width:45vw;max-width:200px;border-radius:15px;box-shadow:0 4px 8px rgba(0,0,0,.3)}
+
+.popup{background:#fff0f5;padding:1rem;border-radius:15px;margin-top:2rem}
+
+/* 🎂 Cake */
+#cake-wrapper{margin-top:7rem;position:relative;display:inline-block;cursor:pointer}
+
+/* Candle image between cake and flame */
+#candle-img{
+  position:absolute;
+  bottom: 18.8rem;
+  left:54%;
+  transform:translateX(-50%);
+  width:30px;
+  height:50px;
+  z-index:1;
+}
+
+/* Flame */
+#flame{
+  position:absolute;top:-40px;left:54%;
+  transform:translateX(-50%);
+  width:15px;height:30px;
+  background:radial-gradient(circle,#ffdd55 30%,#ff6600 60%);
+  border-radius:50%;
+  animation:flicker 1.2s infinite;
+  z-index:2;
+}
+@keyframes flicker{50%{transform:translateX(-50%) scale(1.1)}}
+.flame-off{opacity:0;animation:none}
+
+/* 🎆 Rockets */
+/* 🎆 Firework Rocket */
+.rocket{
+  position:fixed;
+  bottom:-40px;
+  width:6px;
+  height:50px;
+  background:linear-gradient(to top,#ff004f,#ffd700,#00e5ff);
+  animation:launch 1.4s ease-out forwards;
+  box-shadow:0 0 25px white;
+}
+
+@keyframes launch{
+  to{
+    transform:translateY(-95vh);
+    opacity:0;
+  }
+}
+
+/* 🎇 Firework Spark */
+.spark{
+  position:fixed;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--c);
+  animation:explode 2.2s ease-out forwards;
+  box-shadow:0 0 12px currentColor;
+}
+
+@keyframes explode{
+  to{
+    transform:translate(var(--x),var(--y)) scale(0.3);
+    opacity:0;
+  }
+}
+
+
+/* 💝 Romantic Surprise */
+#romantic-section{margin-top:3.5rem;text-align:center}
+
+#surprise-text{
+  font-weight:bold;color:#c2185b;margin-bottom:1rem
+}
+
+/* CENTER SYSTEM */
+#circle-wrapper{
+  position:relative;
+  width:330px;height:330px;
+  margin:0 auto
+}
+
+/* Center Box */
+#romantic-box{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:120px;height:120px;
+  background:pink;border-radius:20px;
+  font-size:3rem;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  box-shadow:0 10px 20px rgba(0,0,0,.3);
+  transition:1s;
+  z-index:2
+}
+#romantic-box.opened{background:transparent}
+#romantic-box.opened::after{content:"🧸";font-size:4rem}
+
+/* Circular Images */
+#circle-images{
+  position:absolute;top:0;left:0;
+  width:100%;height:100%;
+  opacity:0;transition:1s
+}
+#circle-images.show{opacity:1}
+
+#circle-images img{
+  width:100px;height:100px;border-radius:50%;
+  position:absolute;object-fit:cover;
+  box-shadow:0 4px 8px rgba(0,0,0,.3)
+}
+
+#circle-images img:nth-child(1){top:0;left:115px}
+#circle-images img:nth-child(2){top:50px;right:0}
+#circle-images img:nth-child(3){bottom:50px;right:0}
+#circle-images img:nth-child(4){bottom:0;left:115px}
+#circle-images img:nth-child(5){bottom:50px;left:0}
+#circle-images img:nth-child(6){top:50px;left:0}
+
+#romantic-message{
+  margin-top:1.5rem;
+  font-family:'Great Vibes',cursive;
+  font-size:2rem;color:deeppink;
+  opacity:0;transition:2s
+}
+#romantic-message.show{opacity:1}
+
+/* ❤️ Falling Hearts */
+canvas{position:fixed;inset:0;pointer-events:none}
+</style>
+</head>
+
+<body>
+
+<audio id="bg-music" loop>
+  <source src="/music/romantic.mp3">
+</audio>
+
+<canvas id="canvas"></canvas>
+
+<div class="container">
+<h1>Happy Birthday khushboo 🎂💖</h1>
+<div class="typewriter">You make every moment brighter just by being you.</div>
+
+<div class="thought-message" id="thought">
+  You are not just my sister 💖<br />
+  You are my best friend, my strength, my everything ✨<br />
+  No distance can ever change how special you are to me 🌍❤️
+</div>
+
+<p class="message">Some Memories> 💫</p>
+
+
+<div class="gallery">
+  <img src="/images//k1.jpg">
+  <img src="/images/k9.jpg">
+  <img src="/images/k12.jpg">
+  <img src="/images/k11.jpg">
+</div>
+
+<div class="popup">Happy Birthday to my forever support system 😊💫</div>
+
+<!-- 🎂 Cake -->
+<div id="cake-wrapper">
+  <img src="/images/Decorative-Wedding-Cake-PNG-Picture.png" style="width:280px">
+  <!-- Candle image between cake and flame -->
+  <img id="candle-img" src="/images/vecteezy_burning-candle-isolated_49216588.png">
+  <div id="flame"></div>
+</div>
+
+<!-- 💝 Surprise -->
+<div id="romantic-section">
+  <div id="surprise-text">🎁 Surprise for you 💝<br>Click to open</div>
+
+  <div id="circle-wrapper">
+    <div id="romantic-box" onclick="openRomanticSurprise()">🎁</div>
+
+    <div id="circle-images">
+       <img src="/images//k2.jpg">
+       <img src="/images/k4.jpg">
+       <img src="/images/k8.jpg">
+       <img src="/images/k14.jpg">
+       <img src="/images//k15.jpg">
+       <img src="/images/k5.jpg">
+  
+    </div>
+  </div>
+
+  <div id="romantic-message">You are my forever surprise ❤️🧸</div>
+</div>
+</div>
+
+<script>
+/* ❤️ Falling Hearts + ⭐ Falling Stars */
+const canvas = document.getElementById("canvas"),
+      ctx = canvas.getContext("2d");
+
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+window.onresize = () => {
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+};
+
+let hearts = [];
+let stars = [];
+
+/* ❤️ HEART */
+function Heart(){
+  this.x = Math.random()*canvas.width;
+  this.y = Math.random()*canvas.height;
+  this.s = Math.random()*15 + 10;
+  this.sp = Math.random() + 0.5;
+}
+Heart.prototype.draw = function(){
+  ctx.fillStyle = "pink";
+  ctx.beginPath();
+  ctx.moveTo(this.x,this.y);
+  ctx.bezierCurveTo(
+    this.x+this.s/2,this.y-this.s,
+    this.x+this.s*1.5,this.y+this.s/3,
+    this.x,this.y+this.s
+  );
+  ctx.bezierCurveTo(
+    this.x-this.s*1.5,this.y+this.s/3,
+    this.x-this.s/2,this.y-this.s,
+    this.x,this.y
+  );
+  ctx.fill();
+};
+Heart.prototype.update = function(){
+  this.y += this.sp;
+  if(this.y > canvas.height){
+    this.y = -10;
+    this.x = Math.random()*canvas.width;
+  }
+  this.draw();
+};
+
+/* ⭐ STAR */
+function Star(){
+  this.x = Math.random()*canvas.width;
+  this.y = Math.random()*canvas.height;
+  this.r = Math.random()*3 + 2;
+  this.sp = Math.random()*0.8 + 0.3;
+}
+Star.prototype.draw = function(){
+  ctx.fillStyle = "rgba(255,255,255,0.9)";
+  ctx.beginPath();
+  ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+  ctx.fill();
+};
+Star.prototype.update = function(){
+  this.y += this.sp;
+  if(this.y > canvas.height){
+    this.y = -5;
+    this.x = Math.random()*canvas.width;
+  }
+  this.draw();
+};
+
+/* CREATE */
+for(let i=0;i<50;i++) hearts.push(new Heart());
+for(let i=0;i<30;i++) stars.push(new Star());
+
+(function anim(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  stars.forEach(s => s.update());
+  hearts.forEach(h => h.update());
+  requestAnimationFrame(anim);
+})();
+
+/* 🎆 Fireworks */
+function launchRockets(){
+  for(let i=0;i<5;i++){
+    let r = document.createElement("div");
+    r.className = "rocket";
+    r.style.left = Math.random()*90 + "vw";
+    document.body.appendChild(r);
+
+    setTimeout(()=>explode(r),1000);
+    setTimeout(()=>r.remove(),1400);
+  }
+}
+
+function explode(r){
+  const colors = ["#ff1744","#ffea00","#00e5ff","#ff6d00","#e040fb"];
+
+  for(let i=0;i<20;i++){
+    let s = document.createElement("div");
+    s.className = "spark";
+    s.style.left = r.getBoundingClientRect().left + "px";
+    s.style.top = r.getBoundingClientRect().top + "px";
+    s.style.setProperty("--x",(Math.random()*240-120)+"px");
+    s.style.setProperty("--y",(Math.random()*240-120)+"px");
+    s.style.setProperty("--c",colors[Math.floor(Math.random()*colors.length)]);
+    document.body.appendChild(s);
+
+    setTimeout(()=>s.remove(),2200);
+  }
+}
+
+/* 🎂 Candle */
+const flame = document.getElementById("flame");
+const music = document.getElementById("bg-music");
+
+document.getElementById("cake-wrapper").onclick = () => {
+  const isOff = flame.classList.toggle("flame-off");
+
+  if (isOff) {
+    // Candle blown out 🎉
+    music.play();
+    launchRockets();
+  } else {
+    // Candle relit 🕯
+    music.pause();
+    music.currentTime = 0;
+  }
+};
+
+/* 🎁 Surprise */
+function openRomanticSurprise(){
+  document.getElementById("romantic-box").classList.add("opened");
+  document.getElementById("circle-images").classList.add("show");
+  document.getElementById("romantic-message").classList.add("show");
+  if(music.paused) music.play();
+}
+</script>
+
+
+</body>
+</html>
